@@ -53,10 +53,10 @@ const handleSubmit = async (e: { preventDefault: () => void; }) => {
         <div className="flex flex-col items-center space-y-4 text-center">
           <div className="space-y-2">
             <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
-              The Web. Now. Yours.
+              {"The Web. Now. Yours."}
             </h1>
             <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
-              The platform for the future of the web. Sign up to stay informed about our progress.
+              {"The platform for the future of the web. Sign up to stay informed about our progress."}
             </p>
           </div>
           <div className="w-full max-w-sm space-y-2">
@@ -86,14 +86,14 @@ const handleSubmit = async (e: { preventDefault: () => void; }) => {
                 value={formData.phone}
                 onChange={handleChange}
               />
-              <Button type="submit">Sign Up</Button>
+              <Button type="submit">{"Sign Up"}</Button>
             </form>
 
 
             <p className="text-xs text-gray-500 dark:text-gray-400">
-              Enter your email for updates.
+              {"Enter your email for updates."}
               <Link className="underline underline-offset-2" href="#">
-                Terms & Conditions
+                {"Terms & Conditions"}
               </Link>
             </p>
           </div>

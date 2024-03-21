@@ -32,7 +32,7 @@ export function Index() {
         <header className="px-4 lg:px-6 h-14 flex items-center">
           <Link className="flex items-center justify-start" href="#">
             {/* Move the Logo Here */}
-            Logo Here
+            {"Logo Here"}
 
           </Link>
           {/* <nav className="ml-auto flex gap-4 sm:gap-6">
@@ -57,17 +57,16 @@ export function Index() {
               <div className="flex flex-col items-center space-y-4 text-center">
                 <div className="space-y-2">
                   <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
-                    Unleash your skin Clinic's Potential
+                    {"Unleash your skin Clinic's Potential"}
                   </h1>
                   <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-                    These simple Strategies lead to crore+ Revenue per Year!!
-                    A short that will change the way you run the SkinClinic bussiness
+                    {"{These simple Strategies lead to crore+ Revenue per Year!! A short that will change the way you run the SkinClinic bussiness}"}
                   </p>
                 </div>
                 <div className="space-x-4">
                   <Button className="inline-flex h-12  items-center justify-center rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300"
                     onClick={showLargeDrawer}>
-                    Get Register Your Self
+                    {"Get Register Your Self"}
                   </Button>
 
                 </div>
@@ -86,33 +85,33 @@ export function Index() {
               />
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
-                  <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">DISCOVER HOW TO MAKE PATIENT AQUISITION EASY.....</h2>
+                  <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">{"DISCOVER HOW TO MAKE PATIENT AQUISITION EASY....."}</h2>
                   <p className="mx-auto max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-                    Without offering Heavy Discounts to attract Patients.
+                    {"Without offering Heavy Discounts to attract Patients."}
                   </p>
                   <p className="mx-auto max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-                    Without getting Frustration from the Competition.
+                    {"Without getting Frustration from the Competition."}
                   </p>
                   <p className="mx-auto max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-                    Without wasting money on ineffective Marketing agencies.
+                    {"Without wasting money on ineffective Marketing agencies."}
                   </p>
                   <p className="mx-auto max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-                    Without encountering any staff-related issues.
+                   {"Without encountering any staff-related issues."}
                   </p>
                   <p className="mx-auto max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-                    Without Constantly Worring about Patient retention
+                    {"Without Constantly Worring about Patient retention"}
                   </p>
                 </div>
                 <div className="flex space-x-4">
                   <Button className="inline-flex h-12  items-center justify-center rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300"
                     onClick={showLargeDrawer}>
-                    Watch Now for Free!!
+                    {"Watch Now for Free!!"}
                   </Button>
                   <Link
                     className="inline-flex h-12 items-center justify-center rounded-md border border-gray-200 bg-white px-8 text-sm font-medium shadow-sm transition-colors hover:bg-gray-100 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:border-gray-800 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus-visible:ring-gray-300 dark:border-gray-800"
                     href="#"
                   >
-                    Learn more
+                    {"Learn more"}
                   </Link>
                 </div>
               </div>
@@ -122,10 +121,10 @@ export function Index() {
             <div className="container grid items-center justify-center gap-4 px-4 text-center md:px-6">
               <div className="space-y-3">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                  Anything If want to add here
+                  {"Anything If want to add here"}
                 </h2>
                 <p className="mx-auto max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-                  Let your team focus on shipping features instead of managing by your Self.
+                 {" Let your team focus on shipping features instead of managing by your Self."}
                 </p>
               </div>
 
@@ -145,13 +144,13 @@ export function Index() {
           </section>
         </main>
         <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
-          <p className="text-xs text-gray-500 dark:text-gray-400">© 2024 Sumit. All rights reserved.</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">{"© 2024 Sumit. All rights reserved."}</p>
           <nav className="sm:ml-auto flex gap-4 sm:gap-6">
             <Link className="text-xs hover:underline underline-offset-4" href="#">
-              Terms of Service
+              {"Terms of Service"}
             </Link>
             <Link className="text-xs hover:underline underline-offset-4" href="#">
-              Privacy
+              {"Privacy"}
             </Link>
           </nav>
         </footer>
