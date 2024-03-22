@@ -14,6 +14,7 @@ export async function POST(request: NextRequest) {
         if (userExist) {
             return NextResponse.json({
                 message: "User Already Exists!",
+                code:500
             });
         } else {
             const saveUserData = new userData({
@@ -27,6 +28,7 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({
                 message: "User created successfully",
                 data: savedUser,
+                code:200
             });
         }
     } catch (error) {

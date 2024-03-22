@@ -8,9 +8,29 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import React, { useState } from "react"
+import { message, Space } from 'antd';
 
 
 export function ContactInformation() {
+  const [messageApi, contextHolder] = message.useMessage();
+  const success = (body:any) => {
+    messageApi.open({
+      type: 'success',
+      content: body,
+    });
+  };
+  const error = (body: any) => {
+    messageApi.open({
+      type: 'error',
+      content: body,
+    });
+  };
+  const warning = (body: any) => {
+    messageApi.open({
+      type: 'warning',
+      content: body,
+    });
+  };
 
   const [formData, setFormData] = useState({
     name: '',
@@ -25,80 +45,93 @@ export function ContactInformation() {
       [name]: value,
     });
   };
- 
-const handleSubmit = async (e: { preventDefault: () => void; }) => {
-  e.preventDefault();
 
-  try {
-    const response = await axios.post('/api/submitForm', formData);
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
+    e.preventDefault();
 
-   
-    console.log('API Response:', response.data);
+    try {
+      if (!formData.name || !formData.email || !formData.phone) {
+        error("Please fill in all fields.");
+        return;
+      }
+      const response = await axios.post('/api/submitForm', formData);
 
-   
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-    });
-  } catch (error) {
-    // Handle errors
-    console.error('Error submitting form:', error);
-  }
-};
+
+      console.log('API Response:', response.data);
+
+      if (response.data.code == 500) {
+        warning(response.data.message);
+      }else if(response.data.code=200){
+        success("Your Credential Saved FOr Future Reference....")
+      }
+
+
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+      });
+    } catch (error) {
+      // Handle errors
+      console.error('Error submitting form:', error);
+    }
+  };
 
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48">
-      <div className="container px-4 md:px-6">
-        <div className="flex flex-col items-center space-y-4 text-center">
-          <div className="space-y-2">
-            <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
-              {"The Web. Now. Yours."}
-            </h1>
-            <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
-              {"The platform for the future of the web. Sign up to stay informed about our progress."}
-            </p>
-          </div>
-          <div className="w-full max-w-sm space-y-2">
-            <form className="space-y-2" onSubmit={handleSubmit}>
-              <Input
-                placeholder="Name"
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-              />
-              <Input
-                placeholder="Email"
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-              />
-              <Input
-                placeholder="Phone"
-                type="tel"
-                inputMode="numeric"
-                pattern="[0-9]*"
-                minLength={10}
-                maxLength={10}
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-              />
-              <Button type="submit">{"Sign Up"}</Button>
-            </form>
+    <>
+      {contextHolder}
+      <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48">
+        <div className="container px-4 md:px-6">
+          <div className="flex flex-col items-center space-y-4 text-center">
+            <div className="space-y-2">
+              <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
+                {"The Web. Now. Yours."}
+              </h1>
+              <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
+                {"The platform for the future of the web. Sign up to stay informed about our progress."}
+              </p>
+            </div>
+            <div className="w-full max-w-sm space-y-2">
+              <form className="space-y-2" onSubmit={handleSubmit}>
+                <Input
+                  placeholder="Name"
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                />
+                <Input
+                  placeholder="Email"
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                />
+                <Input
+                  placeholder="Phone"
+                  type="tel"
+                  inputMode="numeric"
+                  pattern="[0-9]*"
+                  minLength={10}
+                  maxLength={10}
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                />
+                <Button type="submit">{"Sign Up"}</Button>
+              </form>
 
 
-            <p className="text-xs text-gray-500 dark:text-gray-400">
-              {"Enter your email for updates."}
-              <Link className="underline underline-offset-2" href="#">
-                {"Terms & Conditions"}
-              </Link>
-            </p>
+              <p className="text-xs text-gray-500 dark:text-gray-400">
+                {"Enter your email for updates."}
+                <Link className="underline underline-offset-2" href="#">
+                  {"Terms & Conditions"}
+                </Link>
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   )
 }

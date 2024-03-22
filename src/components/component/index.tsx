@@ -60,7 +60,7 @@ export function Index() {
                     {"Unleash your skin Clinic's Potential"}
                   </h1>
                   <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-                    {"{These simple Strategies lead to crore+ Revenue per Year!! A short that will change the way you run the SkinClinic bussiness}"}
+                    {"These simple Strategies lead to crore+ Revenue per Year!! A short that will change the way you run the SkinClinic bussiness"}
                   </p>
                 </div>
                 <div className="space-x-4">
