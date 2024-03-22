@@ -1,20 +1,18 @@
-const { MongoClient } = require('mongodb');
 
-
-async function connectToDatabase() {
-    // const uri = 'mongodb://localhost:27017/landingPageTest';
-    const uri = 'mongodb+srv://Sumit:2332@mycluster.paejrmj.mongodb.net/landingPageTest';
-
-    const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-
+import mongoose from "mongoose";
+export async function connectToDatabase() {
     try {
-        await client.connect();
-        console.log('Connected to MongoDB');
-        return client.db(); 
+        mongoose.connect('mongodb+srv://Sumit:2332@mycluster.paejrmj.mongodb.net/landingpage');
+        const connection = mongoose.connection;
+        connection.on('connected', () => {
+            console.log("MongoDb Connected Successfully")
+        })
+        connection.on('error', (err) => {
+            console.log("Connection Error", err.message)
+            process.exit()
+        })
     } catch (error) {
-        console.error('Error connecting to MongoDB', error);
-        throw error;
+        console.log("Something went wrong", error.message);
     }
 }
 
-module.exports = { connectToDatabase };
