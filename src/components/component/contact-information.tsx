@@ -9,11 +9,14 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import React, { useState } from "react"
 import { message, Space } from 'antd';
+import { useRouter } from 'next/navigation';
 
 
 export function ContactInformation() {
+  const router = useRouter();
   const [messageApi, contextHolder] = message.useMessage();
-  const success = (body:any) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const success = (body: any) => {
     messageApi.open({
       type: 'success',
       content: body,
@@ -56,13 +59,21 @@ export function ContactInformation() {
       }
       const response = await axios.post('/api/submitForm', formData);
 
-
+      setIsLoading(true);
       console.log('API Response:', response.data);
 
-      if (response.data.code == 500) {
+
+      if (response.data.code == 999) {
         warning(response.data.message);
-      }else if(response.data.code=200){
-        success("Your Credential Saved FOr Future Reference....")
+        localStorage.setItem('userId', response.data.data._id);
+        console.log("sumit", localStorage.getItem('userId'));
+        router.push('/detailsScreen');
+        setIsLoading(false);
+      } else if (response.data.code = 998) {
+        setIsLoading(false);
+        localStorage.setItem('userId', response.data.data._id);
+        success("Your Credential Saved For Future Reference....")
+        router.push('/detailsScreen');
       }
 
 
@@ -92,7 +103,7 @@ export function ContactInformation() {
               </p>
             </div>
             <div className="w-full max-w-sm space-y-2">
-              <form className="space-y-2" onSubmit={handleSubmit}>
+              <form className="space-y-2" onSubmit={handleSubmit} >
                 <Input
                   placeholder="Name"
                   type="text"
@@ -118,7 +129,7 @@ export function ContactInformation() {
                   value={formData.phone}
                   onChange={handleChange}
                 />
-                <Button type="submit">{"Sign Up"}</Button>
+                <Button disabled={isLoading} type="submit">{"Sign Up"}</Button>
               </form>
 
 

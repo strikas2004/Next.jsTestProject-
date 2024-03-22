@@ -14,6 +14,9 @@ const userDataModal = new Schema({
         type: String,
         required: true,
     },
+    scheduledTime: {
+        type: String
+    },
     createdAt: {
         type: Date,
         default: Date.now
