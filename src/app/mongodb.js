@@ -1,8 +1,10 @@
 import mongoose from "mongoose";
 export async function connectToDatabase() {
     try {
-        // mongoose.connect('mongodb+srv://Sumit:2332@mycluster.paejrmj.mongodb.net/landingpage');
-        mongoose.connect(process.env.MONGODB_URI.toString(),);
+
+        // mongoose.connect(process.env.MONGODB_URI,{ useNewUrlParser: true, useUnifiedTopology: true });
+        mongoose.connect("mongodb+srv://Sumit:2332@mycluster.paejrmj.mongodb.net/landingpage",{ useNewUrlParser: true, useUnifiedTopology: true });
+
         const connection = mongoose.connection;
         connection.on('connected', () => {
             console.log("MongoDb Connected Successfully")
