@@ -9,7 +9,11 @@ import { Input } from "@/components/ui/input"
 import { ContactInformation } from "./contact-information"
 import React, { useState } from 'react';
 import { Button, Drawer, Space } from 'antd'
+import Image from 'next/image';
+import { useRouter } from "next/navigation";
 export function Index() {
+
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const [showContactInformation, setShowContactInformation] = useState(false);
   const showDefaultDrawer = () => {
@@ -76,13 +80,14 @@ export function Index() {
           </section>
           <section className="w-full py-12 md:py-24 lg:py-32">
             <div className="container grid items-center gap-6 px-4 md:px-6 lg:grid-cols-[1fr_500px] lg:gap-12 xl:grid-cols-[1fr_550px]">
-              <img
-                alt="Image"
+              <Image
+                src="/indexIMage.png"
                 className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center"
-                height="310"
-                src="/placeholder.svg"
-                width="550"
+                alt="Description of the image"
+                width={550}
+                height={30}
               />
+
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
                   <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">{"DISCOVER HOW TO MAKE PATIENT AQUISITION EASY....."}</h2>
@@ -96,7 +101,7 @@ export function Index() {
                     {"Without wasting money on ineffective Marketing agencies."}
                   </p>
                   <p className="mx-auto max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-                   {"Without encountering any staff-related issues."}
+                    {"Without encountering any staff-related issues."}
                   </p>
                   <p className="mx-auto max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
                     {"Without Constantly Worring about Patient retention"}
@@ -124,7 +129,7 @@ export function Index() {
                   {"Anything If want to add here"}
                 </h2>
                 <p className="mx-auto max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-                 {" Let your team focus on shipping features instead of managing by your Self."}
+                  {" Let your team focus on shipping features instead of managing by your Self."}
                 </p>
               </div>
 
@@ -146,12 +151,19 @@ export function Index() {
         <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
           <p className="text-xs text-gray-500 dark:text-gray-400">{"© 2024 Sumit. All rights reserved."}</p>
           <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-            <Link className="text-xs hover:underline underline-offset-4" href="#">
+
+            <Button className="inline-flex   items-center justify-center rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300"
+              onClick={() => {
+                router.push("/detailsScreen")
+              }}>
               {"Terms of Service"}
-            </Link>
-            <Link className="text-xs hover:underline underline-offset-4" href="#">
+            </Button>
+            <Button className="inline-flex   items-center justify-center rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300"
+              onClick={() => {
+                router.push("/detailsScreen")
+              }}>
               {"Privacy"}
-            </Link>
+            </Button>
           </nav>
         </footer>
       </div>
