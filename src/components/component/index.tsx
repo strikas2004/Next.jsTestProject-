@@ -33,26 +33,16 @@ export function Index() {
   return (
     <>
       <div className="flex flex-col min-h-[100dvh] items-center justify-center">
-        <header className="px-4 lg:px-6 h-14 flex items-center">
-          <Link className="flex items-center justify-start" href="#">
-            {/* Move the Logo Here */}
-            {"Logo Here"}
 
-          </Link>
-          {/* <nav className="ml-auto flex gap-4 sm:gap-6">
-            <Link className="text-sm font-medium hover:underline underline-offset-4" href="#">
-              Features
-            </Link>
-            <Link className="text-sm font-medium hover:underline underline-offset-4" href="#">
-              Pricing
-            </Link>
-            <Link className="text-sm font-medium hover:underline underline-offset-4" href="#">
-              About
-            </Link>
-            <Link className="text-sm font-medium hover:underline underline-offset-4" href="#">
-              Contact
-            </Link>
-          </nav> */}
+        <header className="px-4  lg:px-3  flex items-center">
+          <Image
+            src="/logo.png"
+            className="mx-auto"
+            alt="Description of the image"
+            width={200}
+            height={200}
+          />
+          {/* Add navigation links here if needed */}
         </header>
 
         <main className="flex-1">
@@ -68,17 +58,17 @@ export function Index() {
                   </p>
                 </div>
                 <div className="space-x-4">
-                  <Button className="inline-flex h-12  items-center justify-center rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300"
+                  {/* <Button className="inline-flex h-12  items-center justify-center rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300"
                     onClick={showLargeDrawer}>
                     {"Get Register Your Self"}
-                  </Button>
+                  </Button> */}
 
                 </div>
 
               </div>
             </div>
           </section>
-          <section className="w-full py-12 md:py-24 lg:py-32">
+          <section className="w-full  md:py-8 lg:py-8">
             <div className="container grid items-center gap-6 px-4 md:px-6 lg:grid-cols-[1fr_500px] lg:gap-12 xl:grid-cols-[1fr_550px]">
               <Image
                 src="/indexIMage.png"
@@ -92,19 +82,19 @@ export function Index() {
                 <div className="space-y-2">
                   <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">{"DISCOVER HOW TO MAKE PATIENT AQUISITION EASY....."}</h2>
                   <p className="mx-auto max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-                    {"Without offering Heavy Discounts to attract Patients."}
+                    {"✅ Without offering Heavy Discounts to attract Patients."}
                   </p>
                   <p className="mx-auto max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-                    {"Without getting Frustration from the Competition."}
+                    {"✅ Without getting Frustration from the Competition."}
                   </p>
                   <p className="mx-auto max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-                    {"Without wasting money on ineffective Marketing agencies."}
+                    {"✅ Without wasting money on ineffective Marketing agencies."}
                   </p>
                   <p className="mx-auto max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-                    {"Without encountering any staff-related issues."}
+                    {"✅ Without encountering any staff-related issues."}
                   </p>
                   <p className="mx-auto max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-                    {"Without Constantly Worring about Patient retention"}
+                    {"✅ Without Constantly Worring about Patient retention"}
                   </p>
                 </div>
                 <div className="flex space-x-4">
@@ -149,10 +139,10 @@ export function Index() {
           </section>
         </main>
         <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
-          <p className="text-xs text-gray-500 dark:text-gray-400">{"© 2024 Sumit. All rights reserved."}</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">{"© 2024 All rights reserved."}</p>
           <nav className="sm:ml-auto flex gap-4 sm:gap-6">
 
-            <Button className="inline-flex   items-center justify-center rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300"
+            {/* <Button className="inline-flex   items-center justify-center rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300"
               onClick={() => {
                 router.push("/detailsScreen")
               }}>
@@ -163,7 +153,7 @@ export function Index() {
                 router.push("/detailsScreen")
               }}>
               {"Privacy"}
-            </Button>
+            </Button> */}
           </nav>
         </footer>
       </div>

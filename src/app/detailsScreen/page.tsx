@@ -7,6 +7,7 @@ import { CardTitle, CardDescription, CardHeader, CardContent, CardFooter, Card }
 import { Button } from "@/components/ui/button"
 import { JSX, SVGProps, use } from "react"
 import { useState, useEffect } from 'react';
+import { message } from 'antd';
 import { DatePicker, Space, Modal } from 'antd';
 import axios from "axios";
 const { RangePicker } = DatePicker;
@@ -16,16 +17,35 @@ const { RangePicker } = DatePicker;
 export default function VideoScreen() {
 
   const [open, setOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [show, setShow] = useState(false);
+  const [dateSelected, setSelectedDate] = useState(false);
   const [userId, setUserId] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
-  const videoId = "i96UO8-GFvw?si=ZwTvhrgNHxxol7zV";
+  const videoId = "25YRKM4L2HY?si=zCLCC-Dw95qUZt5V";
+
+  useEffect(() => {
+
+    const timer = setTimeout(() => {
+      setShow(true);
+      // }, 360000);
+    }, 360);
+
+
+    return () => clearTimeout(timer);
+  }, []);
+
+
   const onChange = (value: any, dateString: any) => {
     console.log('Selected Time: ', value);
     setSelectedTime(dateString);
     console.log('Formatted Selected Time: ', dateString);
+    setSelectedDate(true);
   };
   const onOk = async (value: any) => {
+    setIsLoading(true);
     console.log('onOk: ', value, selectedTime, userId);
+
 
     try {
       const data = {
@@ -37,19 +57,21 @@ export default function VideoScreen() {
 
       console.log('Schedule', response.data);
       if (response.data.code == 200) {
-        console.log('====================================');
-        console.log("Slot Booked");
-        console.log('====================================');
+        message.success('Slot Booked Successfully');
+        setIsLoading(false);
       }
 
     } catch (error) {
+      console.error('Error scheduling:', error);
 
+      message.error('Failed to book slot. Please try again later.');
+      setIsLoading(false);
     }
 
-    setOpen(false)
+    setOpen(false);
     setSelectedTime("");
-
   };
+
   useEffect(() => {
 
     const storedUserId = localStorage.getItem('userId')
@@ -60,8 +82,9 @@ export default function VideoScreen() {
   }, []);
   const customFooter = (
     <div >
-      <Button className="inline-flex   items-center justify-center rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300" style={{ color: 'white' }} onClick={() => setOpen(false)}>Cancel</Button>
-      <Button className="inline-flex items-center justify-center rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300" style={{ color: 'white', marginLeft: '10px' }} onClick={onOk}>Ok</Button>
+      <Button className="inline-flex items-center justify-center rounded-md bg-blue-900 px-4 py-2 text-sm font-medium text-blue-50 shadow transition-colors hover:bg-blue-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-blue-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-blue-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300" style={{ color: 'white' }} onClick={() => setOpen(false)}>Cancel</Button>
+      {dateSelected ? <Button className="inline-flex items-center justify-center rounded-md bg-blue-900 px-4 py-2 text-sm font-medium text-blue-50 shadow transition-colors hover:bg-blue-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-blue-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300" style={{ color: 'white', marginLeft: '10px' }} onClick={onOk} disabled={isLoading} >Ok</Button> : <Button className="inline-flex items-center justify-center rounded-md bg-blue-900 px-4 py-2 text-sm font-medium text-blue-50 shadow transition-colors hover:bg-blue-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-blue-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300" style={{ color: 'white', marginLeft: '10px' }} >Select Valid Time Then Press Ok</Button>}
+
     </div>
   );
 
@@ -76,8 +99,8 @@ export default function VideoScreen() {
             {/* <XIcon className="h-6 w-6" /> */}
           </div>
           <div className="p-4 grid place-items-center">
-            <CardTitle className="text-center">Upgrade</CardTitle>
-            <CardDescription className="text-center">Purchase a seat....</CardDescription>
+            <CardTitle className="text-center">Watch right now!!</CardTitle>
+            {/* <CardDescription className="text-center">Purchase a seat....</CardDescription> */}
           </div>
         </CardHeader>
         <CardContent className="p-4 flex flex-col gap-4">
@@ -95,7 +118,9 @@ export default function VideoScreen() {
 
         </CardContent>
         <Modal
-          title="Schedule your Time"
+          title={<h1 className="text-3xl font-bold tracking-tighter sm:text-3xl md:text-3xl lg:text-4xl/none">
+            {"Meet Me On Selected Date!!!"}
+          </h1>}
           centered
           open={open}
           onOk={onOk}
@@ -105,14 +130,25 @@ export default function VideoScreen() {
           footer={customFooter}
 
         >
-          <Space direction="vertical" size={20}>
-            <DatePicker showTime onChange={onChange} />
+
+          <Space direction="vertical" className="w-full py-2 md:py-8 lg:py-8 xl:py-8" size={20}>
+            <DatePicker
+              className="flex justify-center items-center"
+              picker="date"
+              showTime={{ format: 'HH' }}
+              onChange={onChange}
+            />
           </Space>
+
 
         </Modal>
         <CardFooter className="p-4">
-          <Button variant="outline">Not now</Button>
-          <Button onClick={() => setOpen(true)} className="ml-2">Schedule your Time with me.....</Button>
+          {/* <Button variant="outline">Not now</Button> */}
+          {show && (
+            <Button onClick={() => setOpen(true)} className="ml-2">
+              Book an Appointment Now!!
+            </Button>
+          )}
         </CardFooter>
       </Card>
     </div>

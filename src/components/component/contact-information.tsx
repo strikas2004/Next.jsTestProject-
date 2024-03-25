@@ -10,12 +10,13 @@ import Link from "next/link"
 import React, { useState } from "react"
 import { message, Space } from 'antd';
 import { useRouter } from 'next/navigation';
-
+import Image from 'next/image';
 
 export function ContactInformation() {
   const router = useRouter();
   const [messageApi, contextHolder] = message.useMessage();
   const [isLoading, setIsLoading] = useState(false);
+
   const success = (body: any) => {
     messageApi.open({
       type: 'success',
@@ -43,10 +44,19 @@ export function ContactInformation() {
 
   const handleChange = (e: { target: { name: any; value: any } }) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    if (name === 'email') {
+
+      const lowercaseEmail = value.toLowerCase();
+      setFormData({
+        ...formData,
+        [name]: lowercaseEmail,
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+    }
   };
 
   const handleSubmit = async (e: { preventDefault: () => void; }) => {
@@ -57,17 +67,17 @@ export function ContactInformation() {
         error("Please fill in all fields.");
         return;
       }
+      setIsLoading(true);
       const response = await axios.post('/api/submitForm', formData);
 
-      setIsLoading(true);
       console.log('API Response:', response.data);
 
 
       if (response.data.code == 999) {
-        warning(response.data.message);
+        warning("User Already Exists!");
         localStorage.setItem('userId', response.data.data._id);
-        console.log("sumit", localStorage.getItem('userId'));
         router.push('/detailsScreen');
+        // console.log("sumit", localStorage.getItem('userId'));
         setIsLoading(false);
       } else if (response.data.code = 998) {
         setIsLoading(false);
@@ -94,52 +104,59 @@ export function ContactInformation() {
       <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48">
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center space-y-4 text-center">
-            <div className="space-y-2">
-              <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
-                {"The Web. Now. Yours."}
-              </h1>
-              <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
-                {"The platform for the future of the web. Sign up to stay informed about our progress."}
-              </p>
-            </div>
-            <div className="w-full max-w-sm space-y-2">
-              <form className="space-y-2" onSubmit={handleSubmit} >
-                <Input
-                  placeholder="Name"
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                />
-                <Input
-                  placeholder="Email"
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                />
-                <Input
-                  placeholder="Phone"
-                  type="tel"
-                  inputMode="numeric"
-                  pattern="[0-9]*"
-                  minLength={10}
-                  maxLength={10}
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                />
-                <Button disabled={isLoading} type="submit">{"Sign Up"}</Button>
-              </form>
+            {isLoading ? <Image
+              src="/loader.svg"
+              className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center"
+              alt="Description of the image"
+              width={550}
+              height={30}
+            /> : <>
+              <div className="space-y-2">
+                <h1 className="text-3xl font-bold tracking-tighter sm:text-3xl md:text-3xl lg:text-4xl/none">
+                  {"Watch Now For Free..."}
+                </h1>
+                <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
+                  {"Enter your info,Start watching masterclass immediatly !!!"}
+                </p>
+              </div>
+              <div className="w-full max-w-sm space-y-2">
+                <form className="space-y-2" onSubmit={handleSubmit} >
+                  <Input
+                    placeholder="Name"
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                  />
+                  <Input
+                    placeholder="Email"
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                  />
+                  <Input
+                    placeholder="Phone"
+                    type="tel"
+                    inputMode="numeric"
+                    pattern="[0-9]*"
+                    minLength={10}
+                    maxLength={10}
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                  />
+                  <Button disabled={isLoading} type="submit">{"SECURE YOUR SPOT NOW"}</Button>
+                </form>
 
 
-              <p className="text-xs text-gray-500 dark:text-gray-400">
-                {"Enter your email for updates."}
-                <Link className="underline underline-offset-2" href="#">
+                <p className="text-xs text-gray-500 dark:text-gray-400">
+                  {"We DO NOT tolerate SPAM and will never share your email.It's not the jedi way."}
+                  {/* <Link className="underline underline-offset-2" href="#">
                   {"Terms & Conditions"}
-                </Link>
-              </p>
-            </div>
+                </Link> */}
+                </p>
+              </div></>}
           </div>
         </div>
       </section>

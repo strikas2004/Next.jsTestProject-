@@ -16,14 +16,24 @@
   }
 }
 
+
+.ant-picker-ok {
+  background-color: rgb(40, 40, 40);
+ 
+  color: #FFFFFF;
+
+  font-size: 16px;
+
+
+}
+
+
+
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
+  background: linear-gradient(to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
 
 @layer utilities {
