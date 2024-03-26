@@ -4,7 +4,7 @@
  */
 'use client'
 import { CardTitle, CardDescription, CardHeader, CardContent, CardFooter, Card } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
+import { Button } from "antd"
 import { JSX, SVGProps, use } from "react"
 import { useState, useEffect } from 'react';
 import { message } from 'antd';
@@ -82,8 +82,8 @@ export default function VideoScreen() {
   }, []);
   const customFooter = (
     <div >
-      <Button className="inline-flex items-center justify-center rounded-md bg-blue-900 px-4 py-2 text-sm font-medium text-blue-50 shadow transition-colors hover:bg-blue-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-blue-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-blue-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300" style={{ color: 'white' }} onClick={() => setOpen(false)}>Cancel</Button>
-      {dateSelected ? <Button className="inline-flex items-center justify-center rounded-md bg-blue-900 px-4 py-2 text-sm font-medium text-blue-50 shadow transition-colors hover:bg-blue-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-blue-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300" style={{ color: 'white', marginLeft: '10px' }} onClick={onOk} disabled={isLoading} >Ok</Button> : <Button className="inline-flex items-center justify-center rounded-md bg-blue-900 px-4 py-2 text-sm font-medium text-blue-50 shadow transition-colors hover:bg-blue-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-blue-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300" style={{ color: 'white', marginLeft: '10px' }} >Select Valid Time Then Press Ok</Button>}
+      <Button className="inline-flex items-center justify-center rounded-md  px-4 py-2 text-sm font-medium text-blue-50 shadow transition-colors " style={{ color: 'black',backgroundColor:"grey" }} onClick={() => setOpen(false)}>Cancel</Button>
+      {dateSelected ? <Button className="inline-flex items-center justify-center rounded-md  px-4 py-2 text-sm font-medium text-blue-50 shadow transition-colors " style={{ color: 'black', marginLeft: '10px',backgroundColor:"grey" }} onClick={onOk} disabled={isLoading} >Ok</Button> : <Button className="inline-flex items-center justify-center rounded-md  px-4 py-2 text-sm font-medium text-blue-50 shadow transition-colors " style={{ color: 'black' ,marginLeft: '10px',backgroundColor:"grey" }} >Select Valid Time Then Press Ok</Button>}
 
     </div>
   );
