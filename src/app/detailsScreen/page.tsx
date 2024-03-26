@@ -82,8 +82,8 @@ export default function VideoScreen() {
   }, []);
   const customFooter = (
     <div >
-      <Button className="inline-flex items-center justify-center rounded-md  px-4 py-2 text-sm font-medium text-blue-50 shadow transition-colors " style={{ color: 'black',backgroundColor:"grey" }} onClick={() => setOpen(false)}>Cancel</Button>
-      {dateSelected ? <Button className="inline-flex items-center justify-center rounded-md  px-4 py-2 text-sm font-medium text-blue-50 shadow transition-colors " style={{ color: 'black', marginLeft: '10px',backgroundColor:"grey" }} onClick={onOk} disabled={isLoading} >Ok</Button> : <Button className="inline-flex items-center justify-center rounded-md  px-4 py-2 text-sm font-medium text-blue-50 shadow transition-colors " style={{ color: 'black' ,marginLeft: '10px',backgroundColor:"grey" }} >Select Valid Time Then Press Ok</Button>}
+      <Button className="inline-flex items-center justify-center rounded-md  px-4 py-2 text-sm font-medium text-blue-50 shadow transition-colors " style={{ color: 'black', backgroundColor: "grey" }} onClick={() => setOpen(false)}>Cancel</Button>
+      {dateSelected ? <Button className="inline-flex items-center justify-center rounded-md  px-4 py-2 text-sm font-medium text-blue-50 shadow transition-colors " style={{ color: 'black', marginLeft: '10px', backgroundColor: "grey" }} onClick={onOk} disabled={isLoading} >Ok</Button> : <Button className="inline-flex items-center justify-center rounded-md  px-4 py-2 text-sm font-medium text-blue-50 shadow transition-colors " style={{ color: 'black', marginLeft: '10px', backgroundColor: "grey" }} >Select Valid Time Then Press Ok</Button>}
 
     </div>
   );
@@ -145,7 +145,7 @@ export default function VideoScreen() {
         <CardFooter className="p-4">
           {/* <Button variant="outline">Not now</Button> */}
           {show && (
-            <Button  className="inline-flex items-center justify-center rounded-md  px-4 py-2 text-sm font-medium text-blue-50 shadow transition-colors ml-2 " style={{ color: 'blue',backgroundColor:"white" }} onClick={() => setOpen(true)} >
+            <Button className="inline-flex items-center justify-center rounded-md  px-4 py-2 text-sm font-medium text-blue-50 shadow transition-colors ml-2 " style={{ color: 'black', backgroundColor: "white" }} onClick={() => setOpen(true)} >
               Book an Appointment Now!!
             </Button>
           )}

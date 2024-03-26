@@ -1,8 +1,7 @@
 import { connectToDatabase } from '../../mongodb';
 import userData from "../../../modal/userModal";
 import { NextRequest, NextResponse } from "next/server";
-import nodemailer from 'nodemailer';
-
+const nodemailer = require("nodemailer");
 connectToDatabase();
 
 export async function PUT(request: NextRequest) {
@@ -21,16 +20,33 @@ export async function PUT(request: NextRequest) {
             // Update the user's scheduledTime with writeConcern option
             const updateResult = await userData.updateOne({ _id }, { $set: { scheduledTime } }, { writeConcern: { w: 'majority' } });
             console.log("Update Result:", updateResult);
-            // Send email to the user
-            // await sendEmail(userExist.email, 'AppointMent Booked', 'Test Appontment Booked');
+            const updatedUser = await userData.findOne({ _id });
 
+            try {
+                // console.log("HIOIH",updatedUser);
+                const scheduledTime = new Date(updatedUser.scheduledTime);
+                const Time = scheduledTime.toLocaleString('en-US', {
+                    weekday: 'short',
+                    year: 'numeric',
+                    month: 'short', 
+                    day: 'numeric', 
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: true
+                });
+                await sendEmail(userExist.email, 'AppointMent Booked', `Name:${updatedUser.name}\nProvided Phone Number :${updatedUser.phoneNumber}\nScheduled Time:${Time}`);
+
+            } catch (error) {
+                console.log("Error in Sending Mail....")
+            }
 
             return NextResponse.json({
                 message: "User data updated successfully!",
-                data: userExist, // You can return the updated user data if needed
-                code: 200 // You can use appropriate status code here
+                data: userExist,
+                code: 200 
             });
-        } else {    
+        } else {
             return NextResponse.json({
                 message: "User not found",
                 code: 404 // User not found status code
@@ -44,27 +60,29 @@ export async function PUT(request: NextRequest) {
         });
     }
 }
-// async function sendEmail(email: any, subject: any, text: any) {
+async function sendEmail(email: any, subject: any, text: any) {
 
-//     const transporter = nodemailer.createTransport({
-//         host: 'smtp.example.com',
-//         port: 587,
-//         secure: false,
-//         auth: {
-//             user: 'strikas20044@gmail.com',
-//             pass: 'Sumit@2004'
-//         }
-//     });
+    const transporter = nodemailer.createTransport({
+        service: "gmail",
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: false,
+        auth: {
+            user: 'sumitmali20044@gmail.com',
+            pass: 'tdwr mahj fize ytdn'
+        }
+    });
 
-//     // Email message options
-//     const mailOptions = {
-//         from: 'strikas20044@gmail.com',
-//         to: email,
-//         subject: subject,
-//         text: text
-//     };
+    // Email message options
+    const mailOptions = {
+        from: 'sumitmali20044@gmail.com',
+        // to: "2101030400161@silveroakuni.ac.in",
+        to: email,
+        subject: subject,
+        text: text
+    };
 
-//     // Send email
-//    const may = await transporter.sendMail(mailOptions);
-//    console.log(may);
-// }
+    // Send email
+    const may = await transporter.sendMail(mailOptions);
+    console.log(may);
+}
