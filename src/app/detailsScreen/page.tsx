@@ -145,7 +145,7 @@ export default function VideoScreen() {
         <CardFooter className="p-4">
           {/* <Button variant="outline">Not now</Button> */}
           {show && (
-            <Button onClick={() => setOpen(true)} className="ml-2">
+            <Button  className="inline-flex items-center justify-center rounded-md  px-4 py-2 text-sm font-medium text-blue-50 shadow transition-colors ml-2 " style={{ color: 'blue',backgroundColor:"white" }} onClick={() => setOpen(true)} >
               Book an Appointment Now!!
             </Button>
           )}
