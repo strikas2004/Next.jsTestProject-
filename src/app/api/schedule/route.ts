@@ -28,8 +28,8 @@ export async function PUT(request: NextRequest) {
                 const Time = scheduledTime.toLocaleString('en-US', {
                     weekday: 'short',
                     year: 'numeric',
-                    month: 'short', 
-                    day: 'numeric', 
+                    month: 'short',
+                    day: 'numeric',
                     hour: '2-digit',
                     minute: '2-digit',
                     second: '2-digit',
@@ -44,7 +44,7 @@ export async function PUT(request: NextRequest) {
             return NextResponse.json({
                 message: "User data updated successfully!",
                 data: userExist,
-                code: 200 
+                code: 200
             });
         } else {
             return NextResponse.json({
@@ -68,15 +68,15 @@ async function sendEmail(email: any, subject: any, text: any) {
         port: 465,
         secure: false,
         auth: {
-            user: 'sumitmali20044@gmail.com',
-            pass: 'tdwr mahj fize ytdn'
+            user: 'vinayakgadgoli16@gmail.com',
+            pass: 'hgan azwa ktfb gckb'
         }
     });
 
     // Email message options
     const mailOptions = {
-        from: 'sumitmali20044@gmail.com',
-        // to: "2101030400161@silveroakuni.ac.in",
+        from: 'vinayakgadgoli16@gmail.com',
+        cc: 'vinayakgadgoli16@gmail.com',
         to: email,
         subject: subject,
         text: text

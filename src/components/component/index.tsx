@@ -39,8 +39,8 @@ export function Index() {
             src="/logo.png"
             className="mx-auto"
             alt="Description of the image"
-            width={200}
-            height={200}
+            width={150}
+            height={150}
           />
           {/* Add navigation links here if needed */}
         </header>
@@ -54,14 +54,14 @@ export function Index() {
                     {"Unleash your skin Clinic's Potential"}
                   </h1>
                   <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-                    {"These simple Strategies lead to crore+ Revenue per Year!! A short that will change the way you run the SkinClinic bussiness"}
+                    {"These simple Strategies lead to crore+ Revenue per Year!! A short clarity video that will change the way you run the SkinClinic bussiness"}
                   </p>
                 </div>
                 <div className="space-x-4">
-                  {/* <Button className="inline-flex h-12  items-center justify-center rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300"
+                  <Button className="inline-flex h-12  items-center justify-center rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300"
                     onClick={showLargeDrawer}>
-                    {"Get Register Your Self"}
-                  </Button> */}
+                    {"Watch Now for Free!!"}
+                  </Button>
 
                 </div>
 
@@ -112,7 +112,7 @@ export function Index() {
               </div>
             </div>
           </section>
-          <section className="w-full py-12 md:py-24 lg:py-32 border-t">
+          {/* <section className="w-full py-12 md:py-24 lg:py-32 border-t">
             <div className="container grid items-center justify-center gap-4 px-4 text-center md:px-6">
               <div className="space-y-3">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
@@ -123,10 +123,10 @@ export function Index() {
                 </p>
               </div>
 
-              {/* <div className="mx-auto w-full max-w-sm space-y-2">
+               <div className="mx-auto w-full max-w-sm space-y-2">
               <form className="flex space-x-2">
                 <Input className="max-w-lg flex-1" placeholder="Enter your email" type="email" />
-                <Button type="submit">Sign Up</Button>
+                
               </form>
               <p className="text-xs text-gray-500 dark:text-gray-400">
                 Sign up to get notified when we launch.
@@ -134,12 +134,15 @@ export function Index() {
                   Terms & Conditions
                 </Link>
               </p>
-            </div> */}
+            </div> 
             </div>
-          </section>
+          </section> */}
         </main>
         <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
           <p className="text-xs text-gray-500 dark:text-gray-400">{"© 2024 All rights reserved."}</p>
+          <p className="mx-auto max-w-[600px] text-gray-500 md:text-l/relaxed lg:text-base/relaxed l:text-l/relaxed dark:text-gray-400">
+            {"This site is not part  of the  Facebook website or Facebook Inc. Addtionally, This site is NOT endorsed by Facebook in any way. FACEBOOK is a trademark of FACEBOOK Inc."}
+          </p>
           <nav className="sm:ml-auto flex gap-4 sm:gap-6">
 
             {/* <Button className="inline-flex   items-center justify-center rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300"

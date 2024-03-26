@@ -11,6 +11,10 @@ import { message } from 'antd';
 import { DatePicker, Space, Modal } from 'antd';
 import axios from "axios";
 const { RangePicker } = DatePicker;
+import dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
+dayjs.extend(customParseFormat);
+
 
 
 
@@ -87,6 +91,17 @@ export default function VideoScreen() {
 
     </div>
   );
+  const today = dayjs();
+  function disabledDate(current: { day: () => number; }) {
+    // Disable Sundays and Saturdays
+    return current && (current.day() === 0 || current.day() === 6);
+  }
+
+  function disabledHours() {
+    // Disable hours outside 9am to 6pm range
+    return Array.from({ length: 24 }, (_, hour) => hour).filter(hour => hour < 9 || hour > 18);
+  }
+
 
 
 
@@ -119,7 +134,7 @@ export default function VideoScreen() {
         </CardContent>
         <Modal
           title={<h1 className="text-3xl font-bold tracking-tighter sm:text-3xl md:text-3xl lg:text-4xl/none">
-            {"Meet Me On Selected Date!!!"}
+            {"Book your 45 minutes Online Meeting!!"}
           </h1>}
           centered
           open={open}
@@ -137,6 +152,10 @@ export default function VideoScreen() {
               picker="date"
               showTime={{ format: 'HH' }}
               onChange={onChange}
+              minDate={today}
+              disabledDate={disabledDate}
+              disabledHours={disabledHours}
+              
             />
           </Space>
 
