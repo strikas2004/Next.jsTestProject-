@@ -32,8 +32,8 @@ export default function VideoScreen() {
 
     const timer = setTimeout(() => {
       setShow(true);
-      // }, 360000);
-    }, 360);
+      }, 360000);
+    // }, 360);
 
 
     return () => clearTimeout(timer);
