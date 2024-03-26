@@ -155,7 +155,6 @@ export default function VideoScreen() {
               minDate={today}
               disabledDate={disabledDate}
               disabledHours={disabledHours}
-
             />
           </Space>
 
